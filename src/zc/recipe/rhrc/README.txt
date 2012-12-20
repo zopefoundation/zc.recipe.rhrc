@@ -856,7 +856,6 @@ changed.
 
 .. make sure it works with multiple parts
 
-
     >>> write('buildout.cfg',
     ... """
     ... [buildout]
@@ -886,7 +885,37 @@ changed.
     zeo stop
     zope stop
 
+.. make sure it works even if run script is missing
 
+
+    >>> write(demo, 'zeo',  '#!/bin/sh\necho zeo\n')
+    >>> os.chmod(join(demo, 'zeo'), 0755)
+
+    >>> write('buildout.cfg',
+    ... """
+    ... [buildout]
+    ... parts = zoperc
+    ...
+    ... [zoperc]
+    ... recipe = zc.recipe.rhrc
+    ... parts = zeo
+    ... dest = %(dest)s
+    ... process-management = true
+    ... [zeo]
+    ... """ % dict(dest=demo))
+
+    >>> print system('bin/buildout'),
+    Installing zoperc.
+    zeo:
+    zeo
+
+    >>> remove(demo, 'zeo')
+
+    >>> print system('bin/buildout buildout:parts=') # doctest: +ELLIPSIS
+    Uninstalling zoperc.
+    Running uninstall recipe.
+    zeo:
+    ...
 
 Regression Tests
 ================

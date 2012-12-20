@@ -10,6 +10,14 @@ compatible run-control scripts.
 Changes
 *******
 
+1.4.2 (2012-12-20)
+==================
+
+Fixed: Errors were raised if stopping a run script failed during
+       uninstall.  This could cause a buildout to be wedged, because
+       you couldn't uninstall a broken/missing run script.
+
+
 1.4.1 (2012-08-31)
 ==================
 
