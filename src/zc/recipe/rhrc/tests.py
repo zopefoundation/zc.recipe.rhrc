@@ -16,6 +16,15 @@ import doctest, re, unittest
 from zope.testing import renormalizing
 import zc.buildout.testing
 
+try:
+    not_found = zc.buildout.testing.not_found
+except AttributeError:
+    not_found = (re.compile(r"Not found: [^\n]+/(\w|\.)+/\r?\n"), "")
+
+# Buildout 1 says 'part', buildout 2 says 'section'.
+initializing_part = (re.compile(r"Initializing (part|section) "),
+                     "Initializing part ")
+
 def setUp(test):
     zc.buildout.testing.buildoutSetUp(test)
     zc.buildout.testing.install_develop('zc.recipe.rhrc', test)
@@ -29,6 +38,8 @@ def test_suite():
                zc.buildout.testing.normalize_path,
                zc.buildout.testing.normalize_script,
                zc.buildout.testing.normalize_egg_py,
+               not_found,
+               initializing_part,
                ])
             ),
         ))
