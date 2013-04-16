@@ -11,8 +11,8 @@ Changes
 *******
 
 
-Unreleased
-==========
+1.4.2 (2013-04-16)
+==================
 
 Fixed: Tolerate a missing rc script during uninstallation, issuing a
 warning instead of failing completely.
@@ -22,8 +22,8 @@ warning instead of failing completely.
 ==================
 
 Fixed: Errors were raised if stopping a run script failed during
-       uninstall.  This could cause a buildout to be wedged, because
-       you couldn't uninstall a broken/missing run script.
+uninstall.  This could cause a buildout to be wedged, because you
+couldn't uninstall a broken run script.
 
 
 1.4.1 (2012-08-31)
