@@ -26,24 +26,24 @@ default=zc.recipe.rhrc:uninstall
 
 name = 'zc.recipe.rhrc'
 setup(
-    name = name,
-    version = '0',
-    author = 'Jim Fulton',
-    author_email = 'jim@zope.com',
-    description = 'ZC Buildout recipe for Redhat RC scripts',
-    long_description = long_description,
-    license = 'ZPL 2.1',
-    keywords = 'buildout',
+    name=name,
+    version='0',
+    author='Jim Fulton',
+    author_email='jim@zope.com',
+    description='ZC Buildout recipe for Redhat RC scripts',
+    long_description=long_description,
+    license='ZPL 2.1',
+    keywords='buildout',
 
     entry_points=entry_points,
-    packages = find_packages('src'),
-    namespace_packages = ['zc', 'zc.recipe'],
-    package_dir = {'': 'src'},
-    extras_require = dict(
+    packages=find_packages('src'),
+    namespace_packages=['zc', 'zc.recipe'],
+    package_dir={'': 'src'},
+    extras_require=dict(
         test=[
             'zc.buildout',
             'zope.testing',
             ]),
-    install_requires = 'setuptools',
-    zip_safe = False,
+    install_requires='setuptools',
+    zip_safe=False,
     )
