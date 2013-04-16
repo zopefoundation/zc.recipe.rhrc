@@ -184,7 +184,12 @@ def uninstall(name, options):
     name = options.get('deployment-name', name)
     if options.get('process-management') == 'true':
         ctlpath = os.path.join(options.get('dest', '/etc/init.d'), name)
-        subprocess.call([ctlpath, 'stop'])
+        if os.path.exists(ctlpath):
+            subprocess.call([ctlpath, 'stop'])
+        else:
+            logger.warning(
+                'Control script %r missing; processes not shut down.',
+                ctlpath)
     if options.get('chkconfig'):
         chkconfigcommand = options.get('chkconfigcommand', '/sbin/chkconfig')
         os.system(chkconfigcommand+' --del '+name)

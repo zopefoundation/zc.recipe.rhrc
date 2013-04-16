@@ -10,6 +10,14 @@ compatible run-control scripts.
 Changes
 *******
 
+
+Unreleased
+==========
+
+Fixed: Tolerate a missing rc script during uninstallation, issuing a
+warning instead of failing completely.
+
+
 1.4.2 (2012-12-20)
 ==================
 
